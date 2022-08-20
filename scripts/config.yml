@@ -1,0 +1,172 @@
+PERFORMANCE:
+  CORES_INVOLVED: 4
+
+TIME_FRAME:
+  FIRST_PERIOD: 0 # 19. BT (first in xml-archive)
+  LAST_PERIOD: 1 # 20. BT (last in xml-archive, so far..)
+  OLDEST: "21.05.2022"
+  LATEST: "21.06.2022"
+
+PART_ENABLING:
+  WRITE_DATA: False
+  CREATE_FILTERS: False
+  CHECK_FORMALS: False
+  WRITE_PROCESSED_DATA: False
+  FEATURE_COMBINATIONS: False
+  WRITE_TUNING_RESULTS: True
+
+# Feature Generation
+FEATURES:
+  TOPIC_MODEL:
+    MAX_DF: .95
+    MIN_DF: .02
+    CV_TOPIC: 2
+    PARAMS:
+      FIRST_ITER:
+        n_components:
+        #  - 20
+        #  - 25 
+        #  - 30 
+        #  - 35 
+        #  - 40 
+        #  - 45 
+        #  - 50
+        - 25
+        learning_method:
+          - "online"
+        learning_decay:
+          # - .7
+          # - .8
+          # - .9
+          # - .99
+          - .91
+        max_iter:
+          # - 50
+          # - 60
+          # - 70
+          # - 80
+          # - 90
+          # - 100
+          # - 110
+          # - 120
+          - 150
+      SECOND_ITER:
+        learning_decay:
+          - .00 # threshold: (value + threshold) - (value - threshold) = range to search in
+          - .01 # stepwidth to iter through range.
+        max_iter:
+          - 10 # threshold: (value + threshold) - (value - threshold) = range to search in
+          - 5 # stepwidth to iter through range.
+          - 1 # No. of candidates to evaluate in 2nd iter beyond the max. of 1st iter.
+
+  TFIDF:
+    MAX_DF: .9
+    MIN_DF: .05
+    INFO_CUT: .95
+    STEP_WIDTH: 25
+
+# MODEL SELECTION
+CROSS_VALIDATION:
+  SPLITS: 3
+  TEST_SIZE: .2
+
+MODELS:
+# Models to evaluate
+  ACTIVE:
+    - KNN
+    - NB
+    - LR
+    - TREE
+# Model archive
+  KNN:
+    NAME: "KNeighborsClassifier"
+    MODULE: "sklearn.neighbors"
+    PARAMS:
+      FIRST_ITER:
+        n_neighbors:
+          - "int"
+          - 100
+          # - 120
+          # - 140
+          # - 160
+          # - 180
+          # - 200
+          # - 220
+          # - 240
+          # - 260
+          # - 280
+          # - 300
+      SECOND_ITER:
+        n_neighbors:
+          - 100
+  NB:
+    NAME: "GaussianNB"
+    MODULE: "sklearn.naive_bayes"
+    PARAMS: 
+      FIRST_ITER:
+        var_smoothing:
+          - "float"
+          - 1e-9
+      SECOND_ITER:
+        var_smoothing:
+          - "float"
+          - 1e-9
+  LR:
+    NAME: "LogisticRegression"
+    MODULE: "sklearn.linear_model"
+    PARAMS:
+      FIRST_ITER:
+        C:
+          - "float"
+          - 0.01
+          # - 0.1
+          # - 1
+          # - 10
+          # - 100
+        solver:
+          - "str"
+          - "newton-cg"
+          # - "lbfgs"
+        max_iter:
+          - "int"
+          # - 100
+          # - 200
+          # - 300
+          # - 500
+          - 1000
+      SECOND_ITER:
+        C:
+          - "float"
+          - 0.01
+        solver:
+          - "str"
+          - "newton-cg"
+        max_iter:
+          - "int"
+          - 100
+  TREE:
+    NAME: "DecisionTreeClassifier"
+    MODULE: "sklearn.tree"
+    PARAMS:
+      FIRST_ITER:
+        min_samples_split:
+          - "int"
+          - 10
+          # - 20
+          # - 30
+          # - 40
+          # - 50
+        min_samples_leaf:
+          - "int"
+          - 4
+          # - 8
+          # - 12
+          # - 16
+          # - 20
+      SECOND_ITER:
+        min_samples_split:
+          - "int"
+          - 10
+        min_samples_leaf:
+          - "int"
+          - 4

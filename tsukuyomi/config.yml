@@ -1,0 +1,108 @@
+# Dockerfile for tsukuyomi microservice
+# The python implementation of helpful and somehow generic functions
+
+# Created: April 2022
+# @author: Willi Kristen
+
+# @license: Willi Kristen:
+# Copyright (c) 2022 Willi Kristen, Germany
+# https://de.linkedin.com/in/willi-kristen-406887218
+
+# All rights reserved, also regarding any disposal, exploitation, reproduction, editing, distribution.
+# This software is the confidential and proprietary information of Willi Kristen.
+# You shall not disclose such confidential information and shall use it only in accordance with the
+# term s of the license agreement you entered into with Willi Kristen's software solutions.
+
+PATHS:
+  MODELS: "tsukuyomi/business_layer/models/"
+  PP_FILES_PATH: "tsukuyomi/business_layer/preprocessing/preprocessing_files/"
+
+PERFORMANCE:
+  CORES_INVOLVED: -2
+
+TOPICS:
+  TOPIC_NO_1: ""
+
+  TOPIC_NO_2: ""
+
+  TOPIC_NO_3: ""
+
+  TOPIC_NO_4: ""
+
+  TOPIC_NO_5: ""
+
+  TOPIC_NO_6: ""
+
+  TOPIC_NO_7: ""
+
+  TOPIC_NO_8: ""
+
+  TOPIC_NO_9: ""
+
+  TOPIC_NO_10: ""
+
+  TOPIC_NO_11: ""
+
+  TOPIC_NO_12: ""
+
+  TOPIC_NO_13: ""
+
+  TOPIC_NO_14: ""
+
+  TOPIC_NO_15: ""
+
+  TOPIC_NO_16: ""
+
+  TOPIC_NO_17: ""
+
+  TOPIC_NO_18: ""
+
+  TOPIC_NO_19: ""
+
+  TOPIC_NO_20: ""
+
+  TOPIC_NO_21: ""
+
+  TOPIC_NO_22: ""
+
+  TOPIC_NO_23: ""
+
+  TOPIC_NO_24: ""
+
+  TOPIC_NO_25: ""
+
+LOGGING:
+  FORMAT: "%(levelprefix)s [%(asctime)s] - %(message)s"
+  # version: 1
+  # disable_existing_loggers: False
+
+  # filters:
+  #   defaultFilter:
+  #     (): tsukuyomi.utils.logging_utils.DefaultFilter
+
+  # formatters:
+  #   standard:
+  #     (): "uvicorn.logging.DefaultFormatter"
+  #     format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  #     datefmt: "%Y-%m-%d %H:%M:%S"
+  #     # class: uvicorn.logging.DefaultFormatter
+
+  # handlers:
+  #   console:
+  #     class: logging.StreamHandler
+  #     formatter: standard
+  #     stream: "ext://sys.stderr"
+  #     level: INFO
+  #   file:
+  #     class: logging.FileHandler
+  #     level: DEBUG
+  #     filename: utils/logs/service.log
+
+  # loggers:
+  #   tsukuyomi_log:
+  #     handlers: [console]
+  #     level: INFO
+
+  # root:
+  #   level: INFO
+  #   handler: [console, file]

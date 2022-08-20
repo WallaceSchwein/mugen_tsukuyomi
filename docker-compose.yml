@@ -1,0 +1,10 @@
+version: '1.0'
+
+services:
+  mugentsukuyomi:
+    image: tsukuyomi
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5008:8000
